@@ -393,6 +393,7 @@
 				TargetAttributes = {
 					4E807D9219461D9000D875D1 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = CU74U85Q8E;
 						LastSwiftMigration = 0810;
 					};
 					4E807DB819461DC700D875D1 = {
@@ -405,7 +406,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4E807D8E19461D9000D875D1 /* Build configuration list for PBXProject "TastyImitationKeyboard" */;
+			buildConfigurationList = 4E807D8E19461D9000D875D1 /* Build configuration list for PBXProject "SentimentKeyboard" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -637,9 +638,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = CU74U85Q8E;
 				INFOPLIST_FILE = HostingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Archagon.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.camdeardorff.SentimentKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -651,9 +653,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = CU74U85Q8E;
 				INFOPLIST_FILE = HostingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Archagon.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.camdeardorff.SentimentKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -743,7 +746,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4E807D8E19461D9000D875D1 /* Build configuration list for PBXProject "TastyImitationKeyboard" */ = {
+		4E807D8E19461D9000D875D1 /* Build configuration list for PBXProject "SentimentKeyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E807DAD19461D9000D875D1 /* Debug */,
