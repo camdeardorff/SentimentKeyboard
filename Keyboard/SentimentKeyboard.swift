@@ -75,63 +75,10 @@ class SentimentKeyboard: KeyboardViewController {
         }
     }
     
-    override func setupKeys() {
-        super.setupKeys()
-        
-        if takeDebugScreenshot {
-            if self.layout == nil {
-                return
-            }
-            
-            for page in keyboard.pages {
-                for rowKeys in page.rows {
-                    for key in rowKeys {
-                        if let keyView = self.layout!.viewForKey(key) {
-                            keyView.addTarget(self, action: #selector(SentimentKeyboard.takeScreenshotDelay), for: .touchDown)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
     override func createBanner() -> ExtraView? {
-        return SentimentBanner(globalColors: type(of: self).globalColors, darkMode: false, solidColorMode: self.solidColorMode())
+        return SentimentBanner(globalColors: type(of: self).globalColors, darkMode: self.darkMode(), solidColorMode: self.solidColorMode())
     }
     
-    func takeScreenshotDelay() {
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(SentimentKeyboard.takeScreenshot), userInfo: nil, repeats: false)
-    }
-    
-    func takeScreenshot() {
-        if !self.view.bounds.isEmpty {
-            UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-            
-            let oldViewColor = self.view.backgroundColor
-            self.view.backgroundColor = UIColor(hue: (216/360.0), saturation: 0.05, brightness: 0.86, alpha: 1)
-            
-            let rect = self.view.bounds
-            UIGraphicsBeginImageContextWithOptions(rect.size, true, 0)
-            self.view.drawHierarchy(in: self.view.bounds, afterScreenUpdates: true)
-            let capturedImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            
-            // AB: consider re-enabling this when interfaceOrientation actually breaks
-            //// HACK: Detecting orientation manually
-            //let screenSize: CGSize = UIScreen.main.bounds.size
-            //let orientation: UIInterfaceOrientation = screenSize.width < screenSize.height ? .portrait : .landscapeLeft
-            //let name = (orientation.isPortrait ? "Screenshot-Portrait" : "Screenshot-Landscape")
-            
-            let name = (UIDevice.current.orientation.isPortrait ? "Screenshot-Portrait" : "Screenshot-Landscape")
-            let imagePath = "/Users/archagon/Documents/Programming/OSX/RussianPhoneticKeyboard/External/tasty-imitation-keyboard/\(name).png"
-            
-            if let pngRep = UIImagePNGRepresentation(capturedImage!) {
-                try? pngRep.write(to: URL(fileURLWithPath: imagePath), options: [.atomic])
-            }
-            
-            self.view.backgroundColor = oldViewColor
-        }
-    }
 }
 
 func randomCat() -> String {
