@@ -40,7 +40,7 @@ class Catboard: KeyboardViewController {
         
         if key.type == .character || key.type == .specialCharacter {
             if let context = textDocumentProxy.documentContextBeforeInput {
-                if context.characters.count < 2 {
+                if context.count < 2 {
                     textDocumentProxy.insertText(keyOutput)
                     return
                 }
@@ -122,7 +122,7 @@ class Catboard: KeyboardViewController {
             //let orientation: UIInterfaceOrientation = screenSize.width < screenSize.height ? .portrait : .landscapeLeft
             //let name = (orientation.isPortrait ? "Screenshot-Portrait" : "Screenshot-Landscape")
             
-            let name = (self.interfaceOrientation.isPortrait ? "Screenshot-Portrait" : "Screenshot-Landscape")
+            let name = (UIDevice.current.orientation.isPortrait ? "Screenshot-Portrait" : "Screenshot-Landscape")
             let imagePath = "/Users/archagon/Documents/Programming/OSX/RussianPhoneticKeyboard/External/tasty-imitation-keyboard/\(name).png"
             
             if let pngRep = UIImagePNGRepresentation(capturedImage!) {
@@ -137,10 +137,10 @@ class Catboard: KeyboardViewController {
 func randomCat() -> String {
     let cats = "🐱😺😸😹😽😻😿😾😼🙀"
     
-    let numCats = cats.characters.count
+    let numCats = cats.count
     let randomCat = arc4random() % UInt32(numCats)
     
-    let index = cats.characters.index(cats.startIndex, offsetBy: Int(randomCat))
+    let index = cats.index(cats.startIndex, offsetBy: Int(randomCat))
     let character = cats[index]
     
     return String(character)
