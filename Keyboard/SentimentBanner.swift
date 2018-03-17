@@ -13,7 +13,7 @@ This is the demo banner. The banner is needed so that the top row popups have so
 with something (or leave it blank if you like.)
 */
 
-class CatboardBanner: ExtraView {
+class SentimentBanner: ExtraView {
     
     var catSwitch: UISwitch = UISwitch()
     var catLabel: UILabel = UILabel()
@@ -26,7 +26,7 @@ class CatboardBanner: ExtraView {
         
         self.catSwitch.isOn = UserDefaults.standard.bool(forKey: kCatTypeEnabled)
         self.catSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        self.catSwitch.addTarget(self, action: #selector(CatboardBanner.respondToSwitch), for: UIControlEvents.valueChanged)
+        self.catSwitch.addTarget(self, action: #selector(SentimentBanner.respondToSwitch), for: UIControlEvents.valueChanged)
         
         self.updateAppearance()
     }

@@ -1,67 +1,147 @@
 //
-//  CatboardBanner.swift
-//  TastyImitationKeyboard
+//  Catboard.swift
+//  TransliteratingKeyboard
 //
-//  Created by Alexei Baboulevitch on 10/5/14.
+//  Created by Alexei Baboulevitch on 9/24/14.
 //  Copyright (c) 2014 Alexei Baboulevitch ("Archagon"). All rights reserved.
 //
 
 import UIKit
 
 /*
-This is the demo banner. The banner is needed so that the top row popups have somewhere to go. Might as well fill it
-with something (or leave it blank if you like.)
+This is the demo keyboard. If you're implementing your own keyboard, simply follow the example here and then
+set the name of your KeyboardViewController subclass in the Info.plist file.
 */
 
-class CatboardBanner: ExtraView {
+let kCatTypeEnabled = "kCatTypeEnabled"
+
+class SentimentKeyboard: KeyboardViewController {
     
-    var catSwitch: UISwitch = UISwitch()
-    var catLabel: UILabel = UILabel()
+    let takeDebugScreenshot: Bool = false
     
-    required init(globalColors: GlobalColors.Type?, darkMode: Bool, solidColorMode: Bool) {
-        super.init(globalColors: globalColors, darkMode: darkMode, solidColorMode: solidColorMode)
-        
-        self.addSubview(self.catSwitch)
-        self.addSubview(self.catLabel)
-        
-        self.catSwitch.isOn = UserDefaults.standard.bool(forKey: kCatTypeEnabled)
-        self.catSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        self.catSwitch.addTarget(self, action: #selector(CatboardBanner.respondToSwitch), for: UIControlEvents.valueChanged)
-        
-        self.updateAppearance()
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        UserDefaults.standard.register(defaults: [kCatTypeEnabled: true])
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setNeedsLayout() {
-        super.setNeedsLayout()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.catSwitch.center = self.center
-        self.catLabel.center = self.center
-        self.catLabel.frame.origin = CGPoint(x: self.catSwitch.frame.origin.x + self.catSwitch.frame.width + 8, y: self.catLabel.frame.origin.y)
-    }
-    
-    func respondToSwitch() {
-        UserDefaults.standard.set(self.catSwitch.isOn, forKey: kCatTypeEnabled)
-        self.updateAppearance()
-    }
-    
-    func updateAppearance() {
-        if self.catSwitch.isOn {
-            self.catLabel.text = "😺"
-            self.catLabel.alpha = 1
-        }
-        else {
-            self.catLabel.text = "🐱"
-            self.catLabel.alpha = 0.5
+    override func keyPressed(_ key: Key) {
+        let textDocumentProxy = self.textDocumentProxy
+        
+        let keyOutput = key.outputForCase(self.shiftState.uppercase())
+        
+        if !UserDefaults.standard.bool(forKey: kCatTypeEnabled) {
+            textDocumentProxy.insertText(keyOutput)
+            return
         }
         
-        self.catLabel.sizeToFit()
+        if key.type == .character || key.type == .specialCharacter {
+            if let context = textDocumentProxy.documentContextBeforeInput {
+                if context.count < 2 {
+                    textDocumentProxy.insertText(keyOutput)
+                    return
+                }
+                
+                var index = context.endIndex
+                
+                index = context.index(before: index)
+                if context[index] != " " {
+                    textDocumentProxy.insertText(keyOutput)
+                    return
+                }
+                
+                index = context.index(before: index)
+                if context[index] == " " {
+                    textDocumentProxy.insertText(keyOutput)
+                    return
+                }
+
+                textDocumentProxy.insertText("\(randomCat())")
+                textDocumentProxy.insertText(" ")
+                textDocumentProxy.insertText(keyOutput)
+                return
+            }
+            else {
+                textDocumentProxy.insertText(keyOutput)
+                return
+            }
+        }
+        else {
+            textDocumentProxy.insertText(keyOutput)
+            return
+        }
     }
+    
+    override func setupKeys() {
+        super.setupKeys()
+        
+        if takeDebugScreenshot {
+            if self.layout == nil {
+                return
+            }
+            
+            for page in keyboard.pages {
+                for rowKeys in page.rows {
+                    for key in rowKeys {
+                        if let keyView = self.layout!.viewForKey(key) {
+                            keyView.addTarget(self, action: #selector(SentimentKeyboard.takeScreenshotDelay), for: .touchDown)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    override func createBanner() -> ExtraView? {
+        return SentimentBanner(globalColors: type(of: self).globalColors, darkMode: false, solidColorMode: self.solidColorMode())
+    }
+    
+    func takeScreenshotDelay() {
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(SentimentKeyboard.takeScreenshot), userInfo: nil, repeats: false)
+    }
+    
+    func takeScreenshot() {
+        if !self.view.bounds.isEmpty {
+            UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+            
+            let oldViewColor = self.view.backgroundColor
+            self.view.backgroundColor = UIColor(hue: (216/360.0), saturation: 0.05, brightness: 0.86, alpha: 1)
+            
+            let rect = self.view.bounds
+            UIGraphicsBeginImageContextWithOptions(rect.size, true, 0)
+            self.view.drawHierarchy(in: self.view.bounds, afterScreenUpdates: true)
+            let capturedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            // AB: consider re-enabling this when interfaceOrientation actually breaks
+            //// HACK: Detecting orientation manually
+            //let screenSize: CGSize = UIScreen.main.bounds.size
+            //let orientation: UIInterfaceOrientation = screenSize.width < screenSize.height ? .portrait : .landscapeLeft
+            //let name = (orientation.isPortrait ? "Screenshot-Portrait" : "Screenshot-Landscape")
+            
+            let name = (UIDevice.current.orientation.isPortrait ? "Screenshot-Portrait" : "Screenshot-Landscape")
+            let imagePath = "/Users/archagon/Documents/Programming/OSX/RussianPhoneticKeyboard/External/tasty-imitation-keyboard/\(name).png"
+            
+            if let pngRep = UIImagePNGRepresentation(capturedImage!) {
+                try? pngRep.write(to: URL(fileURLWithPath: imagePath), options: [.atomic])
+            }
+            
+            self.view.backgroundColor = oldViewColor
+        }
+    }
+}
+
+func randomCat() -> String {
+    let cats = "🐱😺😸😹😽😻😿😾😼🙀"
+    
+    let numCats = cats.count
+    let randomCat = arc4random() % UInt32(numCats)
+    
+    let index = cats.index(cats.startIndex, offsetBy: Int(randomCat))
+    let character = cats[index]
+    
+    return String(character)
 }
