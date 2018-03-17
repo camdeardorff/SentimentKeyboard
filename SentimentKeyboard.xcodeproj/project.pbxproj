@@ -155,6 +155,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1579278B205DC261007A2A58 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				4E6AEE5219D2488B00931E8F /* Controller */,
+				4E6AEE5019D2486900931E8F /* Model */,
+				4E6AEE4F19D2484B00931E8F /* Views */,
+				4EE7599519F759F300B4E6ED /* Utility */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
 		4E6AEE4F19D2484B00931E8F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,10 +255,7 @@
 		4E807DBA19461DC700D875D1 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				4E6AEE5219D2488B00931E8F /* Controller */,
-				4E6AEE5019D2486900931E8F /* Model */,
-				4E6AEE4F19D2484B00931E8F /* Views */,
-				4EE7599519F759F300B4E6ED /* Utility */,
+				1579278B205DC261007A2A58 /* lib */,
 				4E6AEE5319D2489C00931E8F /* Demo */,
 				4E807DBB19461DC700D875D1 /* Supporting Files */,
 				4E52A6D51A06BADA006A08CE /* Media.xcassets */,
