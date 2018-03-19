@@ -33,7 +33,10 @@ final class ClassificationService {
             default:
                 return .neutral
             }
+        } catch Error.featuresMissing {
+            return .neutral
         } catch {
+            fatalError("BIG PROBLEM")
             return .neutral
         }
     }
@@ -45,16 +48,19 @@ extension ClassificationService {
     func features(from text: String) -> [String: Double] {
         var wordCounts = [String: Double]()
         
+        // some of the tag schemes are not available on all devices
+//        for lang in NSLinguisticTagger.availableTagSchemes(forLanguage: "en") {
+//            print("lang: ", lang)
+//        }
+        
         tagger.string = text
         let range = NSRange(location: 0, length: text.utf16.count)
-        let tagScheme = NSLinguisticTagSchemeNameType
+        let tagScheme = NSLinguisticTagSchemeTokenType
+        //        let tagScheme = NSLinguisticTagSchemeNameType
+
         // Tokenize and count the sentence
         tagger.enumerateTags(in: range, scheme: tagScheme, options: options) { _, tokenRange, _, _ in
             let token = (text as NSString).substring(with: tokenRange).lowercased()
-            // Skip small words
-            guard token.count >= 3 else {
-                return
-            }
             
             if let value = wordCounts[token] {
                 wordCounts[token] = value + 1.0

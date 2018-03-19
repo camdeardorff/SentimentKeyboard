@@ -28,18 +28,27 @@ class SentimentKeyboard: KeyboardViewController {
     }
     
     override func keyPressed(_ key: Key) {
-        let textDocumentProxy = self.textDocumentProxy
+        // with the current text, show the sentiment
+        showSentiment()
+        // insert the key pressed into the text
         let keyOutput = key.outputForCase(self.shiftState.uppercase())
-        
-        if let text = textDocumentProxy.documentContextBeforeInput {
-            let sentiment = classificationService.predictSentiment(from: text)
-            
-            if let banner = bannerView as? SentimentBanner {
-                banner.update(sentiment: sentiment)
-            }
-        }
-        
         textDocumentProxy.insertText(keyOutput)
+    }
+    
+    override func backspaceUp(_ sender: KeyboardKey) {
+        super.backspaceUp(sender)
+        showSentiment()
+    }
+    
+    func showSentiment() {
+        let textDocumentProxy = self.textDocumentProxy
+        
+        guard let text = textDocumentProxy.documentContextBeforeInput,
+            let banner = bannerView as? SentimentBanner else { return }
+        
+        let sentiment = classificationService.predictSentiment(from: text)
+        banner.update(sentiment: sentiment)
+        
     }
     
     override func createBanner() -> ExtraView? {
