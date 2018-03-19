@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1574415B205FF9F30080A24E /* ClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15744159205FF9F20080A24E /* ClassificationService.swift */; };
+		1574415C205FF9F30080A24E /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1574415A205FF9F20080A24E /* Sentiment.swift */; };
+		1574415E205FFA320080A24E /* ClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15744159205FF9F20080A24E /* ClassificationService.swift */; };
+		1574415F205FFA340080A24E /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1574415A205FF9F20080A24E /* Sentiment.swift */; };
+		15744160205FFA370080A24E /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */; };
+		15792793205FF7E0007A2A58 /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */; };
 		4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E807DC81946209600D875D1 /* KeyboardKey.swift */; };
 		4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */; };
 		4E52A6D21A06A61F006A08CE /* ImageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52A6D11A06A61F006A08CE /* ImageKey.swift */; };
@@ -95,6 +101,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		15744159205FF9F20080A24E /* ClassificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationService.swift; sourceTree = "<group>"; };
+		1574415A205FF9F20080A24E /* Sentiment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
+		15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentPolarity.mlmodel; sourceTree = "<group>"; };
 		4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputTraits.swift; sourceTree = "<group>"; };
 		4E52A6D11A06A61F006A08CE /* ImageKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
 		4E52A6D31A06A626006A08CE /* ExtraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraView.swift; sourceTree = "<group>"; };
@@ -155,6 +164,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1574415D205FFA0E0080A24E /* Sentiment Models */ = {
+			isa = PBXGroup;
+			children = (
+				15744159205FF9F20080A24E /* ClassificationService.swift */,
+				1574415A205FF9F20080A24E /* Sentiment.swift */,
+				15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */,
+			);
+			name = "Sentiment Models";
+			sourceTree = "<group>";
+		};
 		1579278B205DC261007A2A58 /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,8 +266,9 @@
 			isa = PBXGroup;
 			children = (
 				1579278B205DC261007A2A58 /* lib */,
-				4E6AEE4B19D246D700931E8F /* SentimentKeyboard.swift */,
+				1574415D205FFA0E0080A24E /* Sentiment Models */,
 				4EEFD78819E0DC6B004D4974 /* SentimentBanner.swift */,
+				4E6AEE4B19D246D700931E8F /* SentimentKeyboard.swift */,
 				4E807DBB19461DC700D875D1 /* Supporting Files */,
 				4E52A6D51A06BADA006A08CE /* Media.xcassets */,
 			);
@@ -489,7 +509,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF16F9B19D2550D0076AFCB /* AppDelegate.swift in Sources */,
+				15744160205FFA370080A24E /* SentimentPolarity.mlmodel in Sources */,
+				1574415F205FFA340080A24E /* Sentiment.swift in Sources */,
 				4EF16F9819D255030076AFCB /* ViewController.swift in Sources */,
+				1574415E205FFA320080A24E /* ClassificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,16 +525,19 @@
 				4EC2A47019DF811E00F789E1 /* ForwardingView.swift in Sources */,
 				4EC2A46E19DF811E00F789E1 /* KeyboardLayout.swift in Sources */,
 				4E60A13A1979FA5C00854CC8 /* KeyboardKeyBackground.swift in Sources */,
+				1574415C205FF9F30080A24E /* Sentiment.swift in Sources */,
 				4E5B67A2196E03B700114361 /* KeyboardModel.swift in Sources */,
 				4E60A13C1979FA8E00854CC8 /* KeyboardConnector.swift in Sources */,
 				4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */,
 				4EEFD78919E0DC6B004D4974 /* SentimentBanner.swift in Sources */,
 				4EE7599B19F75A0D00B4E6ED /* Utilities.swift in Sources */,
 				4EEFD78B19E0DF15004D4974 /* Shapes.swift in Sources */,
+				1574415B205FF9F30080A24E /* ClassificationService.swift in Sources */,
 				4ECBD90219F16DC7004FA2A3 /* DefaultKeyboard.swift in Sources */,
 				4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */,
 				4E52A6D81A06C16C006A08CE /* DefaultSettings.swift in Sources */,
 				4E72C96819E04A7A00DFDDB0 /* SentimentKeyboard.swift in Sources */,
+				15792793205FF7E0007A2A58 /* SentimentPolarity.mlmodel in Sources */,
 				4E60A13E1979FB2E00854CC8 /* DirectionEnum.swift in Sources */,
 				4EC2A46D19DF811E00F789E1 /* KeyboardViewController.swift in Sources */,
 			);
@@ -668,6 +694,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = CU74U85Q8E;
 				INFOPLIST_FILE = HostingApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.camdeardorff.SentimentKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -683,6 +710,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = CU74U85Q8E;
 				INFOPLIST_FILE = HostingApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.camdeardorff.SentimentKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -696,6 +724,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CU74U85Q8E;
 				INFOPLIST_FILE = Keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.camdeardorff.SentimentKeyboard.Keyboard;
 				PRODUCT_NAME = Keyboard;
@@ -710,6 +739,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CU74U85Q8E;
 				INFOPLIST_FILE = Keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.camdeardorff.SentimentKeyboard.Keyboard;
 				PRODUCT_NAME = Keyboard;

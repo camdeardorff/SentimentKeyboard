@@ -15,18 +15,17 @@ with something (or leave it blank if you like.)
 
 class SentimentBanner: ExtraView {
     
-    var catSwitch: UISwitch = UISwitch()
-    var catLabel: UILabel = UILabel()
+    var sentimentLabel: UILabel = UILabel()
+    var currentSentiment: Sentiment? {
+        didSet {
+            updateAppearance()
+        }
+    }
     
     required init(globalColors: GlobalColors.Type?, darkMode: Bool, solidColorMode: Bool) {
         super.init(globalColors: globalColors, darkMode: darkMode, solidColorMode: solidColorMode)
         
-        self.addSubview(self.catSwitch)
-        self.addSubview(self.catLabel)
-        
-        self.catSwitch.isOn = UserDefaults.standard.bool(forKey: kCatTypeEnabled)
-        self.catSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        self.catSwitch.addTarget(self, action: #selector(SentimentBanner.respondToSwitch), for: UIControlEvents.valueChanged)
+        self.addSubview(self.sentimentLabel)
         
         self.updateAppearance()
     }
@@ -42,26 +41,17 @@ class SentimentBanner: ExtraView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        self.catSwitch.center = self.center
-        self.catLabel.center = self.center
-        self.catLabel.frame.origin = CGPoint(x: self.catSwitch.frame.origin.x + self.catSwitch.frame.width + 8, y: self.catLabel.frame.origin.y)
+        self.sentimentLabel.center = self.center
+        self.sentimentLabel.frame.origin = CGPoint(x: frame.width / 2 - sentimentLabel.frame.width / 2, y: self.sentimentLabel.frame.origin.y)
     }
     
-    func respondToSwitch() {
-        UserDefaults.standard.set(self.catSwitch.isOn, forKey: kCatTypeEnabled)
-        self.updateAppearance()
+    func update(sentiment: Sentiment) {
+        currentSentiment = sentiment
     }
     
     func updateAppearance() {
-        if self.catSwitch.isOn {
-            self.catLabel.text = "😺"
-            self.catLabel.alpha = 1
-        }
-        else {
-            self.catLabel.text = "🐱"
-            self.catLabel.alpha = 0.5
-        }
-        
-        self.catLabel.sizeToFit()
+        guard let sentiment = currentSentiment else { return }
+        self.sentimentLabel.text = sentiment.emoji
+        self.sentimentLabel.sizeToFit()
     }
 }
