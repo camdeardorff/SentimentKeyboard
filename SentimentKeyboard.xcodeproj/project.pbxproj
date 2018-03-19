@@ -12,6 +12,8 @@
 		1574415E205FFA320080A24E /* ClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15744159205FF9F20080A24E /* ClassificationService.swift */; };
 		1574415F205FFA340080A24E /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1574415A205FF9F20080A24E /* Sentiment.swift */; };
 		15744160205FFA370080A24E /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */; };
+		157441622060389D0080A24E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157441612060389D0080A24E /* Constants.swift */; };
+		157441632060389D0080A24E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157441612060389D0080A24E /* Constants.swift */; };
 		15792793205FF7E0007A2A58 /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */; };
 		4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E807DC81946209600D875D1 /* KeyboardKey.swift */; };
 		4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */; };
@@ -103,6 +105,7 @@
 /* Begin PBXFileReference section */
 		15744159205FF9F20080A24E /* ClassificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationService.swift; sourceTree = "<group>"; };
 		1574415A205FF9F20080A24E /* Sentiment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
+		157441612060389D0080A24E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentPolarity.mlmodel; sourceTree = "<group>"; };
 		4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputTraits.swift; sourceTree = "<group>"; };
 		4E52A6D11A06A61F006A08CE /* ImageKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
@@ -164,14 +167,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1574415D205FFA0E0080A24E /* Sentiment Models */ = {
+		1574415D205FFA0E0080A24E /* Prediction/Classification */ = {
 			isa = PBXGroup;
 			children = (
 				15744159205FF9F20080A24E /* ClassificationService.swift */,
 				1574415A205FF9F20080A24E /* Sentiment.swift */,
 				15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */,
 			);
-			name = "Sentiment Models";
+			name = Prediction/Classification;
 			sourceTree = "<group>";
 		};
 		1579278B205DC261007A2A58 /* lib */ = {
@@ -266,9 +269,10 @@
 			isa = PBXGroup;
 			children = (
 				1579278B205DC261007A2A58 /* lib */,
-				1574415D205FFA0E0080A24E /* Sentiment Models */,
+				1574415D205FFA0E0080A24E /* Prediction/Classification */,
 				4EEFD78819E0DC6B004D4974 /* SentimentBanner.swift */,
 				4E6AEE4B19D246D700931E8F /* SentimentKeyboard.swift */,
+				157441612060389D0080A24E /* Constants.swift */,
 				4E807DBB19461DC700D875D1 /* Supporting Files */,
 				4E52A6D51A06BADA006A08CE /* Media.xcassets */,
 			);
@@ -513,6 +517,7 @@
 				1574415F205FFA340080A24E /* Sentiment.swift in Sources */,
 				4EF16F9819D255030076AFCB /* ViewController.swift in Sources */,
 				1574415E205FFA320080A24E /* ClassificationService.swift in Sources */,
+				157441622060389D0080A24E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +536,7 @@
 				4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */,
 				4EEFD78919E0DC6B004D4974 /* SentimentBanner.swift in Sources */,
 				4EE7599B19F75A0D00B4E6ED /* Utilities.swift in Sources */,
+				157441632060389D0080A24E /* Constants.swift in Sources */,
 				4EEFD78B19E0DF15004D4974 /* Shapes.swift in Sources */,
 				1574415B205FF9F30080A24E /* ClassificationService.swift in Sources */,
 				4ECBD90219F16DC7004FA2A3 /* DefaultKeyboard.swift in Sources */,

@@ -19,11 +19,11 @@ enum Sentiment {
   var color: UIColor? {
     switch self {
     case .neutral:
-      return UIColor(named: "NeutralColor")
+      return UIColor.SA_Blue
     case .positive:
-      return UIColor(named: "PositiveColor")
+      return UIColor.SA_Green
     case .negative:
-      return UIColor(named: "NegativeColor")
+      return UIColor.SA_Red
     }
   }
 }

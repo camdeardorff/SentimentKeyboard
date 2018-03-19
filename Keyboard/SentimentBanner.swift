@@ -8,17 +8,14 @@
 
 import UIKit
 
-/*
-This is the demo banner. The banner is needed so that the top row popups have somewhere to go. Might as well fill it
-with something (or leave it blank if you like.)
-*/
-
 class SentimentBanner: ExtraView {
     
     var sentimentLabel: UILabel = UILabel()
     var currentSentiment: Sentiment? {
         didSet {
-            updateAppearance()
+            if let sentiment = currentSentiment {
+                updateAppearance(withSentiment: sentiment)
+            }
         }
     }
     
@@ -26,32 +23,28 @@ class SentimentBanner: ExtraView {
         super.init(globalColors: globalColors, darkMode: darkMode, solidColorMode: solidColorMode)
         
         self.addSubview(self.sentimentLabel)
-        
-        self.updateAppearance()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setNeedsLayout() {
-        super.setNeedsLayout()
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
 
         self.sentimentLabel.center = self.center
+        self.sentimentLabel.font = UIFont.systemFont(ofSize: 30)
         self.sentimentLabel.frame.origin = CGPoint(x: frame.width / 2 - sentimentLabel.frame.width / 2, y: self.sentimentLabel.frame.origin.y)
+        self.sentimentLabel.sizeToFit()
     }
     
     func update(sentiment: Sentiment) {
         currentSentiment = sentiment
     }
     
-    func updateAppearance() {
-        guard let sentiment = currentSentiment else { return }
+    private func updateAppearance(withSentiment sentiment: Sentiment) {
         self.sentimentLabel.text = sentiment.emoji
         self.sentimentLabel.sizeToFit()
+        self.backgroundColor = sentiment.color
     }
 }
