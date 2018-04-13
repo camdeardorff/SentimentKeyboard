@@ -24,7 +24,11 @@ final class ClassificationService {
             }
             
             let output = try model.prediction(input: inputFeatures)
+            
+            print("class Probabilities: ", output.classProbability)
             print("prediction: ", output.classLabel)
+            
+            
             switch output.classLabel {
             case "positive":
                 return .positive
@@ -37,8 +41,13 @@ final class ClassificationService {
             return .neutral
         } catch {
             fatalError("BIG PROBLEM")
-            return .neutral
         }
+    }
+    
+    func wordsWithNegativeSentiment(inText text: String) -> [String] {
+        let words = text.split(separator: " ")
+        let negativeWords = words.filter { predictSentiment(from: String($0)) == .negative }
+        return negativeWords.map { String($0) }
     }
 }
 
@@ -49,14 +58,17 @@ extension ClassificationService {
         var wordCounts = [String: Double]()
         
         // some of the tag schemes are not available on all devices
-//        for lang in NSLinguisticTagger.availableTagSchemes(forLanguage: "en") {
-//            print("lang: ", lang)
-//        }
+        // to see what tag schemes are available uncomment this block
+        /*
+        for lang in NSLinguisticTagger.availableTagSchemes(forLanguage: "en") {
+            print("lang: ", lang)
+        }
+        */
         
         tagger.string = text
         let range = NSRange(location: 0, length: text.utf16.count)
         let tagScheme = NSLinguisticTagSchemeTokenType
-        //        let tagScheme = NSLinguisticTagSchemeNameType
+        // let tagScheme = NSLinguisticTagSchemeNameType
 
         // Tokenize and count the sentence
         tagger.enumerateTags(in: range, scheme: tagScheme, options: options) { _, tokenRange, _, _ in
