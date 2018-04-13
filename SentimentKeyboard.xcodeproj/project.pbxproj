@@ -254,7 +254,7 @@
 		4E807D8A19461D9000D875D1 = {
 			isa = PBXGroup;
 			children = (
-				4E807D9519461D9000D875D1 /* SentimentApp */,
+				4E807D9519461D9000D875D1 /* App */,
 				4E807DBA19461DC700D875D1 /* Keyboard */,
 				4E8EF38219F95D75009CBF5D /* KeyboardFramework */,
 				15C98C1F2080EC0E00485733 /* SentimentKeyboard-UnitTests */,
@@ -273,7 +273,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4E807D9519461D9000D875D1 /* SentimentApp */ = {
+		4E807D9519461D9000D875D1 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				153011C920693B2B008878FA /* Main.storyboard */,
@@ -282,7 +282,7 @@
 				4EF16F9319D255030076AFCB /* Images.xcassets */,
 				4E807D9619461D9000D875D1 /* Supporting Files */,
 			);
-			path = SentimentApp;
+			path = App;
 			sourceTree = "<group>";
 		};
 		4E807D9619461D9000D875D1 /* Supporting Files */ = {
