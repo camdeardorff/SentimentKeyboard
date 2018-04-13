@@ -256,8 +256,8 @@
 			children = (
 				4E807D9519461D9000D875D1 /* App */,
 				4E807DBA19461DC700D875D1 /* Keyboard */,
-				4E8EF38219F95D75009CBF5D /* KeyboardFramework */,
 				15C98C1F2080EC0E00485733 /* UnitTests */,
+				4E8EF38219F95D75009CBF5D /* KeyboardFramework */,
 				4E807D9419461D9000D875D1 /* Products */,
 			);
 			sourceTree = "<group>";
