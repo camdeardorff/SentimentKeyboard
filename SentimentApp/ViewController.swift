@@ -19,10 +19,39 @@ class HostingAppViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(HostingAppViewController.keyboardDidHide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillChangeFrame:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HostingAppViewController.keyboardDidChangeFrame(_:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showEventsAcessDeniedAlert()
+
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func showEventsAcessDeniedAlert() {
+        let alertController = UIAlertController(title: "Sad Face Emoji!",
+                                                message: "The calendar permission was not authorized. Please enable it in Settings to continue.",
+                                                preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (alertAction) in
+            
+            
+   UIApplication.shared.open(URL(string:"App-Prefs:root=General&path=Keyboard/KEYBOARDS")!)
+            
+            
+        }
+        alertController.addAction(settingsAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func dismiss() {
