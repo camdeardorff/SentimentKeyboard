@@ -116,7 +116,7 @@
 		1574415A205FF9F20080A24E /* Sentiment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		157441612060389D0080A24E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentPolarity.mlmodel; sourceTree = "<group>"; };
-		15C98C1E2080EC0E00485733 /* SentimentKeyboard_UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SentimentKeyboard_UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15C98C1E2080EC0E00485733 /* SentimentKeyboard-UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SentimentKeyboard-UnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C98C202080EC0E00485733 /* SentimentKeyboard_UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentKeyboard_UnitTests.swift; sourceTree = "<group>"; };
 		15C98C222080EC0E00485733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputTraits.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		4E60A13B1979FA8E00854CC8 /* KeyboardConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardConnector.swift; sourceTree = "<group>"; };
 		4E60A13D1979FB2E00854CC8 /* DirectionEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionEnum.swift; sourceTree = "<group>"; };
 		4E6AEE4B19D246D700931E8F /* SentimentKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentKeyboard.swift; sourceTree = "<group>"; };
-		4E807D9319461D9000D875D1 /* HostingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HostingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E807D9319461D9000D875D1 /* SentimentKeyboard-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SentimentKeyboard-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E807DB919461DC700D875D1 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E807DBC19461DC700D875D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E807DC81946209600D875D1 /* KeyboardKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
@@ -206,13 +206,13 @@
 			name = lib;
 			sourceTree = "<group>";
 		};
-		15C98C1F2080EC0E00485733 /* SentimentKeyboard_UnitTests */ = {
+		15C98C1F2080EC0E00485733 /* SentimentKeyboard-UnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				15C98C202080EC0E00485733 /* SentimentKeyboard_UnitTests.swift */,
 				15C98C222080EC0E00485733 /* Info.plist */,
 			);
-			path = SentimentKeyboard_UnitTests;
+			path = "SentimentKeyboard-UnitTests";
 			sourceTree = "<group>";
 		};
 		4E6AEE4F19D2484B00931E8F /* Views */ = {
@@ -257,7 +257,7 @@
 				4E807D9519461D9000D875D1 /* SentimentApp */,
 				4E807DBA19461DC700D875D1 /* Keyboard */,
 				4E8EF38219F95D75009CBF5D /* KeyboardFramework */,
-				15C98C1F2080EC0E00485733 /* SentimentKeyboard_UnitTests */,
+				15C98C1F2080EC0E00485733 /* SentimentKeyboard-UnitTests */,
 				4E807D9419461D9000D875D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -265,10 +265,10 @@
 		4E807D9419461D9000D875D1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4E807D9319461D9000D875D1 /* HostingApp.app */,
+				4E807D9319461D9000D875D1 /* SentimentKeyboard-App.app */,
 				4E807DB919461DC700D875D1 /* Keyboard.appex */,
 				4E8EF38119F95D74009CBF5D /* KeyboardFramework.framework */,
-				15C98C1E2080EC0E00485733 /* SentimentKeyboard_UnitTests.xctest */,
+				15C98C1E2080EC0E00485733 /* SentimentKeyboard-UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,9 +355,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		15C98C1D2080EC0E00485733 /* SentimentKeyboard_UnitTests */ = {
+		15C98C1D2080EC0E00485733 /* SentimentKeyboard-UnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15C98C272080EC0E00485733 /* Build configuration list for PBXNativeTarget "SentimentKeyboard_UnitTests" */;
+			buildConfigurationList = 15C98C272080EC0E00485733 /* Build configuration list for PBXNativeTarget "SentimentKeyboard-UnitTests" */;
 			buildPhases = (
 				15C98C1A2080EC0E00485733 /* Sources */,
 				15C98C1B2080EC0E00485733 /* Frameworks */,
@@ -368,14 +368,14 @@
 			dependencies = (
 				15C98C242080EC0E00485733 /* PBXTargetDependency */,
 			);
-			name = SentimentKeyboard_UnitTests;
+			name = "SentimentKeyboard-UnitTests";
 			productName = SentimentKeyboard_UnitTests;
-			productReference = 15C98C1E2080EC0E00485733 /* SentimentKeyboard_UnitTests.xctest */;
+			productReference = 15C98C1E2080EC0E00485733 /* SentimentKeyboard-UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4E807D9219461D9000D875D1 /* HostingApp */ = {
+		4E807D9219461D9000D875D1 /* SentimentKeyboard-App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E807DAF19461D9000D875D1 /* Build configuration list for PBXNativeTarget "HostingApp" */;
+			buildConfigurationList = 4E807DAF19461D9000D875D1 /* Build configuration list for PBXNativeTarget "SentimentKeyboard-App" */;
 			buildPhases = (
 				4E807D8F19461D9000D875D1 /* Sources */,
 				4E807D9019461D9000D875D1 /* Frameworks */,
@@ -391,14 +391,14 @@
 				4E807DC319461DC700D875D1 /* PBXTargetDependency */,
 				4E8EF39719F95D75009CBF5D /* PBXTargetDependency */,
 			);
-			name = HostingApp;
+			name = "SentimentKeyboard-App";
 			productName = TastyImitationKeyboard;
-			productReference = 4E807D9319461D9000D875D1 /* HostingApp.app */;
+			productReference = 4E807D9319461D9000D875D1 /* SentimentKeyboard-App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4E807DB819461DC700D875D1 /* Keyboard */ = {
+		4E807DB819461DC700D875D1 /* SentimentKeyboard-Keyboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E807DC419461DC700D875D1 /* Build configuration list for PBXNativeTarget "Keyboard" */;
+			buildConfigurationList = 4E807DC419461DC700D875D1 /* Build configuration list for PBXNativeTarget "SentimentKeyboard-Keyboard" */;
 			buildPhases = (
 				4E807DB519461DC700D875D1 /* Sources */,
 				4E807DB619461DC700D875D1 /* Frameworks */,
@@ -410,7 +410,7 @@
 			dependencies = (
 				4E8EF3A219F95D9C009CBF5D /* PBXTargetDependency */,
 			);
-			name = Keyboard;
+			name = "SentimentKeyboard-Keyboard";
 			productName = Keyboard;
 			productReference = 4E807DB919461DC700D875D1 /* Keyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -482,10 +482,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4E807D9219461D9000D875D1 /* HostingApp */,
-				4E807DB819461DC700D875D1 /* Keyboard */,
+				4E807D9219461D9000D875D1 /* SentimentKeyboard-App */,
+				4E807DB819461DC700D875D1 /* SentimentKeyboard-Keyboard */,
 				4E8EF38019F95D74009CBF5D /* KeyboardFramework */,
-				15C98C1D2080EC0E00485733 /* SentimentKeyboard_UnitTests */,
+				15C98C1D2080EC0E00485733 /* SentimentKeyboard-UnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -630,17 +630,17 @@
 /* Begin PBXTargetDependency section */
 		15C98C242080EC0E00485733 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4E807D9219461D9000D875D1 /* HostingApp */;
+			target = 4E807D9219461D9000D875D1 /* SentimentKeyboard-App */;
 			targetProxy = 15C98C232080EC0E00485733 /* PBXContainerItemProxy */;
 		};
 		4E807DC019461DC700D875D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4E807DB819461DC700D875D1 /* Keyboard */;
+			target = 4E807DB819461DC700D875D1 /* SentimentKeyboard-Keyboard */;
 			targetProxy = 4E807DBF19461DC700D875D1 /* PBXContainerItemProxy */;
 		};
 		4E807DC319461DC700D875D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4E807DB819461DC700D875D1 /* Keyboard */;
+			target = 4E807DB819461DC700D875D1 /* SentimentKeyboard-Keyboard */;
 			targetProxy = 4E807DC219461DC700D875D1 /* PBXContainerItemProxy */;
 		};
 		4E8EF39719F95D75009CBF5D /* PBXTargetDependency */ = {
@@ -952,7 +952,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		15C98C272080EC0E00485733 /* Build configuration list for PBXNativeTarget "SentimentKeyboard_UnitTests" */ = {
+		15C98C272080EC0E00485733 /* Build configuration list for PBXNativeTarget "SentimentKeyboard-UnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15C98C252080EC0E00485733 /* Debug */,
@@ -970,7 +970,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E807DAF19461D9000D875D1 /* Build configuration list for PBXNativeTarget "HostingApp" */ = {
+		4E807DAF19461D9000D875D1 /* Build configuration list for PBXNativeTarget "SentimentKeyboard-App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E807DB019461D9000D875D1 /* Debug */,
@@ -979,7 +979,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E807DC419461DC700D875D1 /* Build configuration list for PBXNativeTarget "Keyboard" */ = {
+		4E807DC419461DC700D875D1 /* Build configuration list for PBXNativeTarget "SentimentKeyboard-Keyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E807DC519461DC700D875D1 /* Debug */,
