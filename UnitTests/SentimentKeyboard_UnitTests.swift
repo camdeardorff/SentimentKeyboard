@@ -7,6 +7,7 @@
 //
 
 import XCTest
+//@testable import SentimentKeyboard-App
 
 class SentimentKeyboard_UnitTests: XCTestCase {
     
