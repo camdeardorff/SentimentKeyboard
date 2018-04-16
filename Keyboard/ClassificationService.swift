@@ -2,10 +2,7 @@ import CoreML
 import Foundation
 
 final class ClassificationService {
-    enum Error: Swift.Error {
-        case featuresMissing
-    }
-    
+
     let model = SentimentPolarity()
     let options: NSLinguisticTagger.Options = [.omitWhitespace, .omitPunctuation, .omitOther]
     lazy var tagger: NSLinguisticTagger = .init(
@@ -15,38 +12,32 @@ final class ClassificationService {
     
     // MARK: - Prediction
     
-    func predictSentiment(from text: String) -> Sentiment {
+    func predictSentiment(from text: String) -> SentimentPrediction {
         do {
             let inputFeatures = features(from: text)
-            // Make prediction only with 2 or more words
-            guard inputFeatures.count > 1 else {
-                throw Error.featuresMissing
-            }
-            
             let output = try model.prediction(input: inputFeatures)
             
-            print("class Probabilities: ", output.classProbability)
-            print("prediction: ", output.classLabel)
-            
-            
-            switch output.classLabel {
-            case "positive":
-                return .positive
-            case "negative":
-                return .negative
-            default:
-                return .neutral
-            }
-        } catch Error.featuresMissing {
-            return .neutral
+            return SentimentPrediction(sentiment: Sentiment.from(classLabel: output.classLabel),
+                                confidence: sentimentProbabilities(fromDict: output.classProbability))
         } catch {
-            fatalError("BIG PROBLEM")
+            return SentimentPrediction(sentiment: .neutral, confidence: [:])
         }
     }
     
+    private func sentimentProbabilities(fromDict dict: [String : Double]) -> [Sentiment : Double] {
+        return Dictionary(uniqueKeysWithValues: dict.map { key, value in
+            (Sentiment.from(classLabel: key), value)
+        })
+    }
+    
+    
     func wordsWithNegativeSentiment(inText text: String) -> [String] {
         let words = text.split(separator: " ")
-        let negativeWords = words.filter { predictSentiment(from: String($0)) == .negative }
+        let negativeWords = words.filter {
+            let sample = String($0) + " " + String($0) + " " + String($0)
+            let prediction = predictSentiment(from: sample)
+            print("prediction of word: ", $0, "-> ", prediction)
+            return prediction.sentiment == .negative }
         return negativeWords.map { String($0) }
     }
 }
