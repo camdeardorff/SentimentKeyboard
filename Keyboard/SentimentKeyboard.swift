@@ -56,11 +56,11 @@ extension SentimentKeyboard {
         guard let text = textDocumentProxy.documentContextBeforeInput,
             let banner = bannerView as? SentimentBanner else { return }
         
-        let sentiment = classificationService.predictSentiment(from: text)
-        banner.update(sentiment: sentiment)
+        let prediction = classificationService.predictSentiment(from: text)
+        banner.update(sentiment: prediction.sentiment)
         
         // if negative find replacements for any negative words
-        if sentiment == .negative {
+        if prediction.sentiment == .negative {
             let replacementWords = classificationService.wordsWithNegativeSentiment(inText: text)
             print("negative words found: \n", replacementWords)
         }
