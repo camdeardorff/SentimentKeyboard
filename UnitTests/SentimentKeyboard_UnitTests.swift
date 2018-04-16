@@ -11,10 +11,11 @@ import XCTest
 
 class SentimentKeyboard_UnitTests: XCTestCase {
     
+    let classificationService = ClassificationService()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
         
     }
     
@@ -23,16 +24,22 @@ class SentimentKeyboard_UnitTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func test_negative_sentence() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let negativeSentence = "This is the worst book I've ever read"
+        let prediction = classificationService.predictSentiment(from: negativeSentence)
+        XCTAssert(prediction.sentiment == .negative)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func test_negative_words() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let negativeSentence = "This is the worst book I've ever read evil bitch buttface fuck ass"
+        
+        let words = classificationService.wordsWithNegativeSentiment(inText: negativeSentence)
+        print(words)
+        XCTAssert(!words.isEmpty)
     }
     
 }
