@@ -1,0 +1,6 @@
+framework module Pods_SentimentKeyboard_Keyboard {
+  umbrella header "Pods-SentimentKeyboard_Keyboard-umbrella.h"
+
+  export *
+  module * { export * }
+}

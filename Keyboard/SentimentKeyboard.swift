@@ -61,9 +61,15 @@ extension SentimentKeyboard {
         
         // if negative find replacements for any negative words
         if prediction.sentiment == .negative {
-            let replacementWords = classificationService.wordsWithNegativeSentiment(inText: text)
-            print("negative words found: \n", replacementWords)
+            let contributingWords = classificationService.wordsWithNegativeSentiment(inText: text)
+            for word in contributingWords {
+                if let replacements = Thesaurus.shared.resultForQuery(query: word)?.synonyms {
+                    let replacement = replacements.suffix(5).filter { classificationService.wordsWithNegativeSentiment(inText: $0).isEmpty }.last
+                    
+                    print("replace `\(word)` with `\(replacement)`")
+                }
+                
+            }
         }
     }
-    
 }

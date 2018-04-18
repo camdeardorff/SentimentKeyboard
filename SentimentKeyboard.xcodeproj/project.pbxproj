@@ -16,7 +16,16 @@
 		157441622060389D0080A24E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157441612060389D0080A24E /* Constants.swift */; };
 		157441632060389D0080A24E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157441612060389D0080A24E /* Constants.swift */; };
 		15792793205FF7E0007A2A58 /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */; };
-		15C98C212080EC0E00485733 /* SentimentKeyboard_UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C98C202080EC0E00485733 /* SentimentKeyboard_UnitTests.swift */; };
+		158B77892081027200902695 /* SentimentPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B77882081027200902695 /* SentimentPrediction.swift */; };
+		158B778B20813AE000902695 /* SentimentPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B77882081027200902695 /* SentimentPrediction.swift */; };
+		15C6F76F2086360400A5EDFB /* words.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 15C6F76E2086360400A5EDFB /* words.sqlite3 */; };
+		15C6F7702086360400A5EDFB /* words.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 15C6F76E2086360400A5EDFB /* words.sqlite3 */; };
+		15C6F7742086362200A5EDFB /* Thesaurus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6F7722086362200A5EDFB /* Thesaurus.swift */; };
+		15C6F7752086362200A5EDFB /* Thesaurus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6F7722086362200A5EDFB /* Thesaurus.swift */; };
+		15C6F7772086362200A5EDFB /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6F7732086362200A5EDFB /* Result.swift */; };
+		15C6F7782086362200A5EDFB /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6F7732086362200A5EDFB /* Result.swift */; };
+		15C6F77D208636BC00A5EDFB /* Thesarus_UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6F77A208636BC00A5EDFB /* Thesarus_UnitTests.swift */; };
+		15C6F781208636CF00A5EDFB /* PredictionClassification_UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6F77E208636CF00A5EDFB /* PredictionClassification_UnitTests.swift */; };
 		4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E807DC81946209600D875D1 /* KeyboardKey.swift */; };
 		4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */; };
 		4E52A6D21A06A61F006A08CE /* ImageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52A6D11A06A61F006A08CE /* ImageKey.swift */; };
@@ -45,6 +54,9 @@
 		4EF16F9619D255030076AFCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF16F9319D255030076AFCB /* Images.xcassets */; };
 		4EF16F9819D255030076AFCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF16F9519D255030076AFCB /* ViewController.swift */; };
 		4EF16F9B19D2550D0076AFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF16F9A19D2550D0076AFCB /* AppDelegate.swift */; };
+		5751039E202B4DE62AD777C9 /* Pods_SentimentKeyboard_Keyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C06B6ADBB66AE0B041C2B21 /* Pods_SentimentKeyboard_Keyboard.framework */; };
+		7FD70FD3E147A4FABE599EA5 /* Pods_SentimentKeyboard_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6CFE6743596F84D65D20AC1 /* Pods_SentimentKeyboard_App.framework */; };
+		C41B942D8E3DA965ADA7412B /* Pods_KeyboardFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF5EA5F85E540D51C23DEE5E /* Pods_KeyboardFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,9 +128,15 @@
 		1574415A205FF9F20080A24E /* Sentiment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		157441612060389D0080A24E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentPolarity.mlmodel; sourceTree = "<group>"; };
+		158B77882081027200902695 /* SentimentPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentPrediction.swift; sourceTree = "<group>"; };
+		15C6F76E2086360400A5EDFB /* words.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = words.sqlite3; sourceTree = "<group>"; };
+		15C6F7722086362200A5EDFB /* Thesaurus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thesaurus.swift; sourceTree = "<group>"; };
+		15C6F7732086362200A5EDFB /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		15C6F77A208636BC00A5EDFB /* Thesarus_UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thesarus_UnitTests.swift; sourceTree = "<group>"; };
+		15C6F77E208636CF00A5EDFB /* PredictionClassification_UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionClassification_UnitTests.swift; sourceTree = "<group>"; };
 		15C98C1E2080EC0E00485733 /* SentimentKeyboard_UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SentimentKeyboard_UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		15C98C202080EC0E00485733 /* SentimentKeyboard_UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentKeyboard_UnitTests.swift; sourceTree = "<group>"; };
 		15C98C222080EC0E00485733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C06B6ADBB66AE0B041C2B21 /* Pods_SentimentKeyboard_Keyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentimentKeyboard_Keyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputTraits.swift; sourceTree = "<group>"; };
 		4E52A6D11A06A61F006A08CE /* ImageKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
 		4E52A6D31A06A626006A08CE /* ExtraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraView.swift; sourceTree = "<group>"; };
@@ -149,6 +167,14 @@
 		4EF16F9319D255030076AFCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4EF16F9519D255030076AFCB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4EF16F9A19D2550D0076AFCB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		80D08C84F65FEE3883B6744E /* Pods-SentimentKeyboard_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentimentKeyboard_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SentimentKeyboard_App/Pods-SentimentKeyboard_App.debug.xcconfig"; sourceTree = "<group>"; };
+		8C8CD2E2BB6C331DC0B90C23 /* Pods-SentimentKeyboard_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentimentKeyboard_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-SentimentKeyboard_App/Pods-SentimentKeyboard_App.release.xcconfig"; sourceTree = "<group>"; };
+		A39BAF9A534D555897AAD037 /* Pods-SentimentKeyboard_Keyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentimentKeyboard_Keyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SentimentKeyboard_Keyboard/Pods-SentimentKeyboard_Keyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		C162ECAD5E9D1502E1F42C90 /* Pods-KeyboardFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardFramework/Pods-KeyboardFramework.release.xcconfig"; sourceTree = "<group>"; };
+		CF5EA5F85E540D51C23DEE5E /* Pods_KeyboardFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyboardFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDF4636002E8022A07E0D643 /* Pods-SentimentKeyboard_Keyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SentimentKeyboard_Keyboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-SentimentKeyboard_Keyboard/Pods-SentimentKeyboard_Keyboard.release.xcconfig"; sourceTree = "<group>"; };
+		F6CFE6743596F84D65D20AC1 /* Pods_SentimentKeyboard_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SentimentKeyboard_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6E797E69A8C953E1E1CB14C /* Pods-KeyboardFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardFramework/Pods-KeyboardFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E8EF39819F95D75009CBF5D /* KeyboardFramework.framework in Frameworks */,
+				7FD70FD3E147A4FABE599EA5 /* Pods_SentimentKeyboard_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E8EF3A019F95D93009CBF5D /* KeyboardFramework.framework in Frameworks */,
+				5751039E202B4DE62AD777C9 /* Pods_SentimentKeyboard_Keyboard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,16 +207,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C41B942D8E3DA965ADA7412B /* Pods_KeyboardFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1510BF69208635C700CB6FB0 /* Thesarus */ = {
+			isa = PBXGroup;
+			children = (
+				15C6F7732086362200A5EDFB /* Result.swift */,
+				15C6F7722086362200A5EDFB /* Thesaurus.swift */,
+				15C6F76E2086360400A5EDFB /* words.sqlite3 */,
+			);
+			name = Thesarus;
+			sourceTree = "<group>";
+		};
 		1574415D205FFA0E0080A24E /* Prediction/Classification */ = {
 			isa = PBXGroup;
 			children = (
 				15744159205FF9F20080A24E /* ClassificationService.swift */,
+				158B77882081027200902695 /* SentimentPrediction.swift */,
 				1574415A205FF9F20080A24E /* Sentiment.swift */,
 				15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */,
 			);
@@ -209,7 +249,8 @@
 		15C98C1F2080EC0E00485733 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				15C98C202080EC0E00485733 /* SentimentKeyboard_UnitTests.swift */,
+				15C6F77A208636BC00A5EDFB /* Thesarus_UnitTests.swift */,
+				15C6F77E208636CF00A5EDFB /* PredictionClassification_UnitTests.swift */,
 				15C98C222080EC0E00485733 /* Info.plist */,
 			);
 			path = UnitTests;
@@ -259,6 +300,8 @@
 				15C98C1F2080EC0E00485733 /* UnitTests */,
 				4E8EF38219F95D75009CBF5D /* KeyboardFramework */,
 				4E807D9419461D9000D875D1 /* Products */,
+				918541088918C99E28C72EBB /* Pods */,
+				BFCD8A4EBB45DFEBAD76104A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -297,6 +340,7 @@
 		4E807DBA19461DC700D875D1 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				1510BF69208635C700CB6FB0 /* Thesarus */,
 				1579278B205DC261007A2A58 /* lib */,
 				1574415D205FFA0E0080A24E /* Prediction/Classification */,
 				4EEFD78819E0DC6B004D4974 /* SentimentBanner.swift */,
@@ -341,6 +385,29 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
+		918541088918C99E28C72EBB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6E797E69A8C953E1E1CB14C /* Pods-KeyboardFramework.debug.xcconfig */,
+				C162ECAD5E9D1502E1F42C90 /* Pods-KeyboardFramework.release.xcconfig */,
+				80D08C84F65FEE3883B6744E /* Pods-SentimentKeyboard_App.debug.xcconfig */,
+				8C8CD2E2BB6C331DC0B90C23 /* Pods-SentimentKeyboard_App.release.xcconfig */,
+				A39BAF9A534D555897AAD037 /* Pods-SentimentKeyboard_Keyboard.debug.xcconfig */,
+				DDF4636002E8022A07E0D643 /* Pods-SentimentKeyboard_Keyboard.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BFCD8A4EBB45DFEBAD76104A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF5EA5F85E540D51C23DEE5E /* Pods_KeyboardFramework.framework */,
+				F6CFE6743596F84D65D20AC1 /* Pods_SentimentKeyboard_App.framework */,
+				1C06B6ADBB66AE0B041C2B21 /* Pods_SentimentKeyboard_Keyboard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -377,12 +444,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E807DAF19461D9000D875D1 /* Build configuration list for PBXNativeTarget "SentimentKeyboard_App" */;
 			buildPhases = (
+				7546D27FCD4B774077051014 /* [CP] Check Pods Manifest.lock */,
 				4E807D8F19461D9000D875D1 /* Sources */,
 				4E807D9019461D9000D875D1 /* Frameworks */,
 				4E807D9119461D9000D875D1 /* Resources */,
 				4E807DC719461DC700D875D1 /* Embed App Extensions */,
 				4E5B67C4196E07B300114361 /* Embed Frameworks */,
 				15792787205DC00E007A2A58 /* ShellScript */,
+				FA87CB6E7C5AEBB9766F304C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -400,6 +469,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E807DC419461DC700D875D1 /* Build configuration list for PBXNativeTarget "SentimentKeyboard_Keyboard" */;
 			buildPhases = (
+				551D3913FFB2637C3A2ABFAB /* [CP] Check Pods Manifest.lock */,
 				4E807DB519461DC700D875D1 /* Sources */,
 				4E807DB619461DC700D875D1 /* Frameworks */,
 				4E807DB719461DC700D875D1 /* Resources */,
@@ -419,6 +489,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E8EF39A19F95D75009CBF5D /* Build configuration list for PBXNativeTarget "KeyboardFramework" */;
 			buildPhases = (
+				CF7C9C40DDFC996DE779D2F6 /* [CP] Check Pods Manifest.lock */,
 				4E8EF37C19F95D74009CBF5D /* Sources */,
 				4E8EF37D19F95D74009CBF5D /* Frameworks */,
 				4E8EF37E19F95D74009CBF5D /* Headers */,
@@ -464,7 +535,7 @@
 					4E8EF38019F95D74009CBF5D = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = CU74U85Q8E;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -505,6 +576,7 @@
 				153011CB20693B2B008878FA /* Main.storyboard in Resources */,
 				4EF16F9619D255030076AFCB /* Images.xcassets in Resources */,
 				4EF16F9119D254E00076AFCB /* Background.jpg in Resources */,
+				15C6F76F2086360400A5EDFB /* words.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E52A6DA1A06C198006A08CE /* DefaultSettings.xib in Resources */,
+				15C6F7702086360400A5EDFB /* words.sqlite3 in Resources */,
 				4E52A6D61A06BADA006A08CE /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +639,78 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
+		551D3913FFB2637C3A2ABFAB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SentimentKeyboard_Keyboard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7546D27FCD4B774077051014 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SentimentKeyboard_App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF7C9C40DDFC996DE779D2F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeyboardFramework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA87CB6E7C5AEBB9766F304C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SentimentKeyboard_App/Pods-SentimentKeyboard_App-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SentimentKeyboard_App/Pods-SentimentKeyboard_App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -573,7 +718,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15C98C212080EC0E00485733 /* SentimentKeyboard_UnitTests.swift in Sources */,
+				15C6F77D208636BC00A5EDFB /* Thesarus_UnitTests.swift in Sources */,
+				15C6F781208636CF00A5EDFB /* PredictionClassification_UnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,11 +727,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C6F7772086362200A5EDFB /* Result.swift in Sources */,
 				4EF16F9B19D2550D0076AFCB /* AppDelegate.swift in Sources */,
 				15744160205FFA370080A24E /* SentimentPolarity.mlmodel in Sources */,
 				1574415F205FFA340080A24E /* Sentiment.swift in Sources */,
+				158B77892081027200902695 /* SentimentPrediction.swift in Sources */,
 				4EF16F9819D255030076AFCB /* ViewController.swift in Sources */,
 				1574415E205FFA320080A24E /* ClassificationService.swift in Sources */,
+				15C6F7742086362200A5EDFB /* Thesaurus.swift in Sources */,
 				157441622060389D0080A24E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,12 +749,15 @@
 				4EC2A46E19DF811E00F789E1 /* KeyboardLayout.swift in Sources */,
 				4E60A13A1979FA5C00854CC8 /* KeyboardKeyBackground.swift in Sources */,
 				1574415C205FF9F30080A24E /* Sentiment.swift in Sources */,
+				15C6F7782086362200A5EDFB /* Result.swift in Sources */,
 				4E5B67A2196E03B700114361 /* KeyboardModel.swift in Sources */,
+				15C6F7752086362200A5EDFB /* Thesaurus.swift in Sources */,
 				4E60A13C1979FA8E00854CC8 /* KeyboardConnector.swift in Sources */,
 				4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */,
 				4EEFD78919E0DC6B004D4974 /* SentimentBanner.swift in Sources */,
 				4EE7599B19F75A0D00B4E6ED /* Utilities.swift in Sources */,
 				157441632060389D0080A24E /* Constants.swift in Sources */,
+				158B778B20813AE000902695 /* SentimentPrediction.swift in Sources */,
 				4EEFD78B19E0DF15004D4974 /* Shapes.swift in Sources */,
 				1574415B205FF9F30080A24E /* ClassificationService.swift in Sources */,
 				4ECBD90219F16DC7004FA2A3 /* DefaultKeyboard.swift in Sources */,
@@ -828,6 +980,7 @@
 		};
 		4E807DB019461D9000D875D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80D08C84F65FEE3883B6744E /* Pods-SentimentKeyboard_App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -844,6 +997,7 @@
 		};
 		4E807DB119461D9000D875D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C8CD2E2BB6C331DC0B90C23 /* Pods-SentimentKeyboard_App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -860,6 +1014,7 @@
 		};
 		4E807DC519461DC700D875D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A39BAF9A534D555897AAD037 /* Pods-SentimentKeyboard_Keyboard.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CU74U85Q8E;
@@ -875,6 +1030,7 @@
 		};
 		4E807DC619461DC700D875D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDF4636002E8022A07E0D643 /* Pods-SentimentKeyboard_Keyboard.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CU74U85Q8E;
@@ -890,8 +1046,10 @@
 		};
 		4E8EF39B19F95D75009CBF5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6E797E69A8C953E1E1CB14C /* Pods-KeyboardFramework.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -914,6 +1072,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -923,8 +1082,10 @@
 		};
 		4E8EF39C19F95D75009CBF5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C162ECAD5E9D1502E1F42C90 /* Pods-KeyboardFramework.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
