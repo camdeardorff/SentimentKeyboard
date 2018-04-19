@@ -66,6 +66,10 @@ class DefaultSettings: ExtraView, UITableViewDataSource, UITableViewDelegate {
         fatalError("loading from nib not supported")
     }
     
+    required init(frame: CGRect) {
+        fatalError("init(frame:) has not been implemented")
+    }
+    
     func loadNib() {
         let assets = Bundle(for: type(of: self)).loadNibNamed("DefaultSettings", owner: self, options: nil)
         

@@ -15,9 +15,12 @@
 		15744160205FFA370080A24E /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */; };
 		157441622060389D0080A24E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157441612060389D0080A24E /* Constants.swift */; };
 		157441632060389D0080A24E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157441612060389D0080A24E /* Constants.swift */; };
+		157763352088062C00A8F779 /* ReplacementSuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157763332088062C00A8F779 /* ReplacementSuggestionCell.swift */; };
+		157763362088062C00A8F779 /* ReplacementSuggestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 157763342088062C00A8F779 /* ReplacementSuggestionCell.xib */; };
 		15792793205FF7E0007A2A58 /* SentimentPolarity.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */; };
 		158B77892081027200902695 /* SentimentPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B77882081027200902695 /* SentimentPrediction.swift */; };
 		158B778B20813AE000902695 /* SentimentPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B77882081027200902695 /* SentimentPrediction.swift */; };
+		15910BAA2087E08C000A0B21 /* SentimentBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15910BA92087E08C000A0B21 /* SentimentBanner.xib */; };
 		15C6F76F2086360400A5EDFB /* words.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 15C6F76E2086360400A5EDFB /* words.sqlite3 */; };
 		15C6F7702086360400A5EDFB /* words.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 15C6F76E2086360400A5EDFB /* words.sqlite3 */; };
 		15C6F7742086362200A5EDFB /* Thesaurus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C6F7722086362200A5EDFB /* Thesaurus.swift */; };
@@ -127,8 +130,11 @@
 		15744159205FF9F20080A24E /* ClassificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationService.swift; sourceTree = "<group>"; };
 		1574415A205FF9F20080A24E /* Sentiment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		157441612060389D0080A24E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		157763332088062C00A8F779 /* ReplacementSuggestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacementSuggestionCell.swift; sourceTree = "<group>"; };
+		157763342088062C00A8F779 /* ReplacementSuggestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplacementSuggestionCell.xib; sourceTree = "<group>"; };
 		15792792205FF7E0007A2A58 /* SentimentPolarity.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentPolarity.mlmodel; sourceTree = "<group>"; };
 		158B77882081027200902695 /* SentimentPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentPrediction.swift; sourceTree = "<group>"; };
+		15910BA92087E08C000A0B21 /* SentimentBanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentimentBanner.xib; sourceTree = "<group>"; };
 		15C6F76E2086360400A5EDFB /* words.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = words.sqlite3; sourceTree = "<group>"; };
 		15C6F7722086362200A5EDFB /* Thesaurus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thesaurus.swift; sourceTree = "<group>"; };
 		15C6F7732086362200A5EDFB /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -235,7 +241,7 @@
 			name = Prediction/Classification;
 			sourceTree = "<group>";
 		};
-		1579278B205DC261007A2A58 /* lib */ = {
+		1579278B205DC261007A2A58 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
 				4E6AEE5219D2488B00931E8F /* Controller */,
@@ -243,7 +249,34 @@
 				4E6AEE4F19D2484B00931E8F /* Views */,
 				4EE7599519F759F300B4E6ED /* Utility */,
 			);
-			name = lib;
+			name = Lib;
+			sourceTree = "<group>";
+		};
+		15910BAB2087EA0B000A0B21 /* Word Replacement */ = {
+			isa = PBXGroup;
+			children = (
+				15910BB02087FD43000A0B21 /* Banner */,
+				15910BB12087FD4A000A0B21 /* Cell */,
+			);
+			name = "Word Replacement";
+			sourceTree = "<group>";
+		};
+		15910BB02087FD43000A0B21 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				4EEFD78819E0DC6B004D4974 /* SentimentBanner.swift */,
+				15910BA92087E08C000A0B21 /* SentimentBanner.xib */,
+			);
+			name = Banner;
+			sourceTree = "<group>";
+		};
+		15910BB12087FD4A000A0B21 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				157763332088062C00A8F779 /* ReplacementSuggestionCell.swift */,
+				157763342088062C00A8F779 /* ReplacementSuggestionCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		15C98C1F2080EC0E00485733 /* UnitTests */ = {
@@ -341,9 +374,9 @@
 			isa = PBXGroup;
 			children = (
 				1510BF69208635C700CB6FB0 /* Thesarus */,
-				1579278B205DC261007A2A58 /* lib */,
+				1579278B205DC261007A2A58 /* Lib */,
 				1574415D205FFA0E0080A24E /* Prediction/Classification */,
-				4EEFD78819E0DC6B004D4974 /* SentimentBanner.swift */,
+				15910BAB2087EA0B000A0B21 /* Word Replacement */,
 				4E6AEE4B19D246D700931E8F /* SentimentKeyboard.swift */,
 				157441612060389D0080A24E /* Constants.swift */,
 				4E807DBB19461DC700D875D1 /* Supporting Files */,
@@ -585,6 +618,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E52A6DA1A06C198006A08CE /* DefaultSettings.xib in Resources */,
+				157763362088062C00A8F779 /* ReplacementSuggestionCell.xib in Resources */,
+				15910BAA2087E08C000A0B21 /* SentimentBanner.xib in Resources */,
 				15C6F7702086360400A5EDFB /* words.sqlite3 in Resources */,
 				4E52A6D61A06BADA006A08CE /* Media.xcassets in Resources */,
 			);
@@ -759,6 +794,7 @@
 				157441632060389D0080A24E /* Constants.swift in Sources */,
 				158B778B20813AE000902695 /* SentimentPrediction.swift in Sources */,
 				4EEFD78B19E0DF15004D4974 /* Shapes.swift in Sources */,
+				157763352088062C00A8F779 /* ReplacementSuggestionCell.swift in Sources */,
 				1574415B205FF9F30080A24E /* ClassificationService.swift in Sources */,
 				4ECBD90219F16DC7004FA2A3 /* DefaultKeyboard.swift in Sources */,
 				4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */,

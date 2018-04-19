@@ -35,17 +35,20 @@ class SentimentKeyboard: KeyboardViewController {
     // MARK: character input
     
     override func keyPressed(_ key: Key) {
-        // with the current text, show the sentiment
-        showSentiment()
+        
         // insert the key pressed into the text
         let keyOutput = key.outputForCase(self.shiftState.uppercase())
         textDocumentProxy.insertText(keyOutput)
+        
+        // with the current text, show the sentiment
+        showSentiment()
     }
     
     override func backspaceUp(_ sender: KeyboardKey) {
         super.backspaceUp(sender)
         showSentiment()
     }
+    
 }
 
 extension SentimentKeyboard {
@@ -57,19 +60,24 @@ extension SentimentKeyboard {
             let banner = bannerView as? SentimentBanner else { return }
         
         let prediction = classificationService.predictSentiment(from: text)
-        banner.update(sentiment: prediction.sentiment)
+        
+        var replacements: [(word: String, replacement: String)]? = []
         
         // if negative find replacements for any negative words
         if prediction.sentiment == .negative {
             let contributingWords = classificationService.wordsWithNegativeSentiment(inText: text)
             for word in contributingWords {
-                if let replacements = Thesaurus.shared.resultForQuery(query: word)?.synonyms {
-                    let replacement = replacements.suffix(5).filter { classificationService.wordsWithNegativeSentiment(inText: $0).isEmpty }.last
-                    
-                    print("replace `\(word)` with `\(replacement)`")
+                if let synonyms = Thesaurus.shared.resultForQuery(query: word)?.synonyms {
+                    if let replacement = synonyms.suffix(5).filter({ classificationService.wordsWithNegativeSentiment(inText: $0).isEmpty }).last {
+                        print("replace `\(word)` with `\(replacement)`")
+                        replacements?.append((word: word, replacement: replacement))
+                    }
                 }
                 
             }
         }
+        
+        banner.update(sentiment: prediction.sentiment, replacements: replacements)
+
     }
 }

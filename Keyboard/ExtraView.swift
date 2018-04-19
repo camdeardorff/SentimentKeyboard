@@ -29,4 +29,13 @@ class ExtraView: UIView {
         
         super.init(coder: aDecoder)
     }
+    
+    required override init(frame: CGRect) {
+        self.globalColors = nil
+        self.darkMode = false
+        self.solidColorMode = false
+        
+        super.init(frame: frame)
+    }
+    
 }

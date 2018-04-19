@@ -10,7 +10,7 @@ import UIKit
 import AudioToolbox
 
 let metrics: [String:Double] = [
-    "topBanner": 45
+    "topBanner": 60
 ]
 func metric(_ name: String) -> CGFloat { return CGFloat(metrics[name]!) }
 
