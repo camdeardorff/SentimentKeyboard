@@ -64,7 +64,7 @@ class SentimentKeyboard: KeyboardViewController {
         guard let bannerHeight = self.bannerView?.frame.height else { return }
 
         let frame = CGRect(x: view.frame.origin.x,
-                           y: view.frame.origin.y + bannerHeight,
+                           y: view.frame.height,
                            width: view.frame.width,
                            height: view.frame.height - bannerHeight)
         
@@ -73,12 +73,13 @@ class SentimentKeyboard: KeyboardViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isHidden = true
-        
+        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.85)
         view.addSubview(tableView)       
     }
     
     func replace(word: Word, with replacement: String) {
 
+        // find and remove the old word
         let textDocumentProxy = self.textDocumentProxy
         let characterCount = textDocumentProxy.documentContextBeforeInput?.count ?? 0
         let startPoint = characterCount - word.range.upperBound
@@ -87,9 +88,14 @@ class SentimentKeyboard: KeyboardViewController {
             textDocumentProxy.deleteBackward()
         }
         
+        // inser the replacement and show the new sentiment
         textDocumentProxy.insertText(replacement)
         showSentiment()
         
+        // put the text position at the end
+        let trailingCount = textDocumentProxy.documentContextAfterInput?.count ?? 0
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: trailingCount)
+
     }
     
 }
@@ -154,6 +160,29 @@ extension SentimentKeyboard {
     }
 }
 
+extension SentimentKeyboard {
+    func hideSuggestionTable() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.tableView.frame = CGRect(x: 0,
+                                          y: self.view.frame.height,
+                                          width: self.tableView.frame.width,
+                                          height: self.tableView.frame.height)
+        }, completion: { _ in
+            self.tableView.isHidden = true
+        })
+    }
+    func showSuggestionTable() {
+        guard let bannerHeight = self.bannerView?.frame.height else { return }
+        self.tableView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.frame = CGRect(x: self.view.frame.origin.x,
+                                          y: self.view.frame.origin.y + bannerHeight,
+                                          width: self.view.frame.width,
+                                          height: self.view.frame.height - bannerHeight)
+        }
+    }
+}
+
 extension SentimentKeyboard: UITableViewDelegate {
     
 }
@@ -163,7 +192,10 @@ extension SentimentKeyboard: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel!.text = items[indexPath.row]
+        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
+        cell.textLabel?.textAlignment = .center
+        cell.backgroundColor = .clear
         return cell
     }
     
@@ -179,15 +211,15 @@ extension SentimentKeyboard: UITableViewDataSource {
 
 extension SentimentKeyboard: SentimentBannerDelegate {
     func showAllReplacements(forSuggestion suggestion: (word: Word, replacement: String)) {
-        tableView.isHidden = false
         if let replacements = (currentSuggestsionsForWord.filter { $0.word == suggestion.word }).first {
             items = replacements.suggestions.map { $0.synonym }
             tableView.reloadData()
+            showSuggestionTable()
         }
     }
     
     func closeButtonPressed() {
-        tableView.isHidden = true
+        hideSuggestionTable()
     }
     
     func replacementSelected(forSuggestion suggestion: (word: Word, replacement: String)) {
