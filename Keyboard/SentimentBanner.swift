@@ -8,13 +8,21 @@
 
 import UIKit
 
+protocol SentimentBannerDelegate {
+    func closeButtonPressed()
+    func showAllReplacements(forSuggestion suggestion: (word: Word, replacement: String))
+    func replacementSelected(forSuggestion suggestion: (word: Word, replacement: String))
+}
+
 class SentimentBanner: ExtraView {
     
     @IBOutlet var contentView: UIView!
-    
-    @IBOutlet weak var replacementCollectionView: UICollectionView!
-    
+    @IBOutlet var replacementCollectionView: UICollectionView!
     @IBOutlet var sentimentLabel: UILabel!
+    @IBOutlet var closeButton: UIButton!
+    
+    var delegate: SentimentBannerDelegate?
+    
     var currentSentiment: Sentiment? {
         didSet {
             if let sentiment = currentSentiment {
@@ -23,7 +31,7 @@ class SentimentBanner: ExtraView {
         }
     }
     
-    var replacementSuggestions: [(word: String, replacement: String)]? {
+    var replacementSuggestions: [(word: Word, replacement: String)]? {
         didSet {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { // change 2 to desired number of seconds
@@ -32,20 +40,19 @@ class SentimentBanner: ExtraView {
             }
         }
     }
-    
+        
     required init(globalColors: GlobalColors.Type?, darkMode: Bool, solidColorMode: Bool) {
         super.init(globalColors: globalColors, darkMode: darkMode, solidColorMode: solidColorMode)
         sharedInit()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        sharedInit()
-    }
-    
     required init(frame: CGRect) {
         super.init(frame: frame)
         sharedInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func sharedInit() {
@@ -64,13 +71,19 @@ class SentimentBanner: ExtraView {
         replacementCollectionView.backgroundColor = .clear
         replacementCollectionView.contentInset = UIEdgeInsets(top: 0, left: sentimentLabel.frame.width, bottom: 0, right: 0)
         
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(SentimentBanner.handleLongPress(_:)))
+        replacementCollectionView.addGestureRecognizer(longPressRecognizer)
+        
         if let flowLayout = replacementCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
+        
+        closeButton.isHidden = true
+        closeButton.tintColor = .lightGray
     }
     
     
-    func update(sentiment: Sentiment, replacements: [(word: String, replacement: String)]? = nil) {
+    func update(sentiment: Sentiment, replacements: [(word: Word, replacement: String)]? = nil) {
         print("update sentiment to: ", sentiment)
         currentSentiment = sentiment
         replacementSuggestions = replacements
@@ -97,6 +110,33 @@ class SentimentBanner: ExtraView {
             }, completion: nil)
         }
     }
+    
+    func handleLongPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+            
+            let touchPoint = longPressGestureRecognizer.location(in: replacementCollectionView)
+            if let indexPath = replacementCollectionView.indexPathForItem(at: touchPoint) {
+                if let rs = replacementSuggestions,
+                    indexPath.row < rs.count {
+                    let replacement = rs[indexPath.row]
+                    delegate?.showAllReplacements(forSuggestion: replacement)
+                    closeButton.isHidden = false
+                    sentimentLabel.isHidden = true
+                }
+            }
+        }
+    }
+    
+    @IBAction func closeButtonWasPressed(_ sender: Any) {
+        if !closeButton.isHidden {
+            delegate?.closeButtonPressed()
+            closeButton.isHidden = true
+            sentimentLabel.isHidden = false
+        }
+    }
+    
+    
 }
 extension SentimentBanner: UICollectionViewDataSource {
 
@@ -107,7 +147,7 @@ extension SentimentBanner: UICollectionViewDataSource {
         if let replacementSuggestionCell = cell as? ReplacementSuggestionCell,
             let replacements = replacementSuggestions {
 
-            replacementSuggestionCell.setLabel(withWord: replacements[indexPath.row].word,
+            replacementSuggestionCell.setLabel(withWord: replacements[indexPath.row].word.text,
                                                andReplacement: replacements[indexPath.row].replacement)
             
         }
@@ -126,6 +166,12 @@ extension SentimentBanner: UICollectionViewDataSource {
 }
 extension SentimentBanner: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let rs = replacementSuggestions else { return }
+        if rs.count > indexPath.row {
+            delegate?.replacementSelected(forSuggestion: rs[indexPath.row])
+        }
+    }
 }
 
 
