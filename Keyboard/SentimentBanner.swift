@@ -33,10 +33,14 @@ class SentimentBanner: ExtraView {
     
     var replacementSuggestions: [(word: Word, replacement: String)]? {
         didSet {
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { // change 2 to desired number of seconds
-                
+            if let sentiment = currentSentiment,
+                sentiment != .negative {
                 self.replacementCollectionView.reloadData()
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { // change 2 to desired number of seconds
+                    
+                    self.replacementCollectionView.reloadData()
+                }
             }
         }
     }
@@ -93,11 +97,13 @@ class SentimentBanner: ExtraView {
         
         let duration = 0.3
         
-        UIView.animate(withDuration: duration) {
+        self.sentimentLabel.backgroundColor = .clear
+        UIView.animate(withDuration: duration, animations: {
             self.sentimentLabel.text = sentiment.emoji
-            self.sentimentLabel.backgroundColor = sentiment.color
             self.contentView.backgroundColor = sentiment.color
-        }
+        }, completion: { _ in
+            self.sentimentLabel.backgroundColor = sentiment.color
+        })
         
         if sentiment == .negative {
             UIView.animate(withDuration: duration, delay: duration, options: UIViewAnimationOptions.curveEaseInOut, animations: {
