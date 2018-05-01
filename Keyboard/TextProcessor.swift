@@ -21,9 +21,9 @@ class TextProcessor {
          - Parameter inString: string to parse, determining the parts of speech within
          - Returns: a list of tokens (substrings of string provided) and the part of speech they are associated with
      */
-    func partsOfSpeechForToken(inString string: String) -> [(token: String, tag: NSLinguisticTag)] {
+    func partsOfSpeechForToken(inString string: String) -> [(token: String, range: Range<Int>, tag: NSLinguisticTag)] {
         let text = NSString(string: string)
-        let tags_Ranges = tagsAndRanges(forString: text)
+        let tags_Ranges = posTagsAndRanges(forString: text)
         return tokenMapping(forTags: tags_Ranges.tags, inString: text, withRanges: tags_Ranges.tokenRanges)
     }
     
@@ -35,7 +35,7 @@ class TextProcessor {
      */
     func partOfSpeechFor(word: String) -> NSLinguisticTag? {
         let text = NSString(string: word)
-        let tags_Ranges = tagsAndRanges(forString: text)
+        let tags_Ranges = posTagsAndRanges(forString: text)
         
         guard let tag = tags_Ranges.tags.first,
             let range = tags_Ranges.tokenRanges.first else { return nil }
@@ -44,13 +44,18 @@ class TextProcessor {
     }
     
     
+    
+    // MARK: private api
+    
+    
+    
     /**
         extracts any tags found within the string and what substring they are associated with
      
         - Parameter forString: string to parse, determining the parts of speech within
         - Returns: tuple constaining list of tags and also ranges they correspond to
      */
-    private func tagsAndRanges(forString string: NSString) -> (tags: [NSLinguisticTag], tokenRanges: [NSRange]) {
+    private func posTagsAndRanges(forString string: NSString) -> (tags: [NSLinguisticTag], tokenRanges: [NSRange]) {
         var tokenRanges: NSArray?
         let options: NSLinguisticTagger.Options = [.omitWhitespace, .omitPunctuation, .joinNames]
         let tags = string.linguisticTags(
@@ -61,6 +66,8 @@ class TextProcessor {
         return (tags: tags as [NSLinguisticTag], tokenRanges: tokenRanges as? [NSRange] ?? [NSRange]())
     }
     
+    
+    
     /**
          maps a list of tags to the string substring specified by the matching range within the text
      
@@ -70,14 +77,19 @@ class TextProcessor {
      
          - Returns: list of tuples containing a token (string) and it's part of speech in the text.
      */
-    private func tokenMapping(forTags tags: [NSLinguisticTag], inString string: NSString, withRanges ranges: [NSRange]) -> [(token: String, tag: NSLinguisticTag)] {
+    private func tokenMapping(forTags tags: [NSLinguisticTag], inString string: NSString, withRanges ranges: [NSRange]) -> [(token: String, range: Range<Int>, tag: NSLinguisticTag)] {
+    
         
-        return tags.enumerated().map { (arg) in
+        var tokens = tags.enumerated().map { (arg) -> (token: String, range: Range<Int>?, tag: NSLinguisticTag) in
             let (idx, tag) = arg
             
             let range = ranges[idx] as NSRange
             let word = string.substring(with: range)
-            return (token: word, tag: tag)
+            return (token: word, range: Range(range), tag: tag)
         }
+        tokens = tokens.filter { $0.range != nil }
+        return tokens.map { (token: $0.token, range: $0.range!, tag: $0.tag) }
     }
+    
+   
 }
