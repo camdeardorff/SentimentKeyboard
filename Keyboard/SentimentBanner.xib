@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SentimentBanner" customModule="Keyboard" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="CFu-Rt-OXQ" id="Ucn-iw-hsE"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="FSH-dF-aaz"/>
                 <outlet property="replacementCollectionView" destination="OA2-cf-0MA" id="iC8-LY-bpj"/>
                 <outlet property="sentimentLabel" destination="d0Y-XJ-gE9" id="zI0-z2-IEX"/>
@@ -40,15 +41,29 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFu-Rt-OXQ">
+                    <rect key="frame" x="16" y="16" width="71" height="71"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="CFu-Rt-OXQ" secondAttribute="height" multiplier="1:1" id="0tW-Cv-ozF"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" backgroundImage="close"/>
+                    <connections>
+                        <action selector="closeButtonWasPressed:" destination="-1" eventType="touchUpInside" id="C95-Ol-eew"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="d0Y-XJ-gE9" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="4oK-8x-0UU"/>
+                <constraint firstItem="CFu-Rt-OXQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="53B-2r-JoN"/>
                 <constraint firstItem="d0Y-XJ-gE9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7kE-lF-2WJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="OA2-cf-0MA" secondAttribute="bottom" id="GB6-O0-OAF"/>
                 <constraint firstItem="d0Y-XJ-gE9" firstAttribute="width" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" id="MwK-Zv-fHv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OA2-cf-0MA" secondAttribute="trailing" id="QDu-br-5XC"/>
                 <constraint firstItem="d0Y-XJ-gE9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ciy-yF-2Fg"/>
                 <constraint firstItem="OA2-cf-0MA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="jz3-25-czJ"/>
+                <constraint firstItem="CFu-Rt-OXQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="q1q-at-Lkp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="CFu-Rt-OXQ" secondAttribute="bottom" constant="16" id="qhP-qj-BHZ"/>
                 <constraint firstItem="OA2-cf-0MA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="tJB-qw-UDi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -56,4 +71,7 @@
             <point key="canvasLocation" x="167.5" y="-504.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="close" width="32" height="32"/>
+    </resources>
 </document>
