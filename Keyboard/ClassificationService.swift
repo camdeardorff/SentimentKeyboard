@@ -36,9 +36,15 @@ final class ClassificationService {
         let negativeWords = words.filter {
             let sample = String($0) + " " + String($0) + " " + String($0)
             let prediction = predictSentiment(from: sample)
-            print("prediction of word: ", $0, "-> ", prediction)
+            // print("prediction of word: ", $0, "-> ", prediction)
             return prediction.sentiment == .negative }
         return negativeWords.map { String($0) }
+    }
+    
+    func wordHasNegativeSentiment(word: String) -> Bool {
+        let sample = word + " " + word + " " + word
+        let prediction = predictSentiment(from: sample)
+        return prediction.sentiment == .negative
     }
 }
 
@@ -47,14 +53,6 @@ final class ClassificationService {
 extension ClassificationService {
     func features(from text: String) -> [String: Double] {
         var wordCounts = [String: Double]()
-        
-        // some of the tag schemes are not available on all devices
-        // to see what tag schemes are available uncomment this block
-        /*
-        for lang in NSLinguisticTagger.availableTagSchemes(forLanguage: "en") {
-            print("lang: ", lang)
-        }
-        */
         
         tagger.string = text
         let range = NSRange(location: 0, length: text.utf16.count)
