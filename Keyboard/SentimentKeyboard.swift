@@ -14,11 +14,10 @@ class SentimentKeyboard: KeyboardViewController {
     
     let classificationService = ClassificationService()
     var currentSuggestsionsForWord: [(word: Word, suggestions: [(synonym: String, pos: NSLinguisticTag)])] = []
-    
+    var currentSynonymsForWord: (word: Word, suggestions: [(synonym: String, pos: NSLinguisticTag)])? = nil
     
     var tableView: UITableView!
-    var items = ["a", "b", "c", "d", "e", "f", "g", "h"]
-    
+    var visualEffectsView: UIVisualEffectView!
     // MARK: load
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -73,8 +72,15 @@ class SentimentKeyboard: KeyboardViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isHidden = true
-        tableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.85)
-        view.addSubview(tableView)       
+        tableView.backgroundColor = .clear //UIColor.gray.withAlphaComponent(0.75)
+        
+        visualEffectsView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        visualEffectsView.frame = tableView.bounds
+        tableView.backgroundView = visualEffectsView
+        
+        view.addSubview(tableView)
+        
+        
     }
     
     func replace(word: Word, with replacement: String) {
@@ -115,12 +121,9 @@ extension SentimentKeyboard {
         // if negative find replacements for any negative words
         if prediction.sentiment == .negative {
             
-//            // find negative words in the text
-//            let contributingWords = classificationService.wordsWithNegativeSentiment(inText: text)
-//            // get parts of speech for each token in the text
             
             let partsOfSpeechForToken = TextProcessor.shared.partsOfSpeechForToken(inString: text)
-            let words = partsOfSpeechForToken.enumerated().map { (arg) -> Word in
+            var words = partsOfSpeechForToken.enumerated().map { (arg) -> Word in
                 let (idx, posForToken) = arg
                 return Word(id: idx,
                             text: posForToken.token,
@@ -129,6 +132,7 @@ extension SentimentKeyboard {
                             isNegative: classificationService.wordHasNegativeSentiment(word: posForToken.token))
             }
             
+            words = words.filter { $0.isNegative }
             
             
             for word in words {
@@ -183,16 +187,16 @@ extension SentimentKeyboard {
     }
 }
 
-extension SentimentKeyboard: UITableViewDelegate {
-    
-}
+
 
 extension SentimentKeyboard: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let synForWord = currentSynonymsForWord else { return UITableViewCell(frame: .zero) }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.text = synForWord.suggestions[indexPath.row].synonym
         cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
         cell.textLabel?.textAlignment = .center
         cell.backgroundColor = .clear
@@ -200,7 +204,7 @@ extension SentimentKeyboard: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return currentSynonymsForWord?.suggestions.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -209,10 +213,26 @@ extension SentimentKeyboard: UITableViewDataSource {
     
 }
 
+extension SentimentKeyboard: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let synForWord = currentSynonymsForWord {
+            if synForWord.suggestions.count > indexPath.row {
+                let replacement = synForWord.suggestions[indexPath.row]
+                replace(word: synForWord.word, with: replacement.synonym)
+                if let sentimentBanner = bannerView as? SentimentBanner {
+                    sentimentBanner.closeButtonWasPressed(self)
+                }
+            }
+        }
+        
+        hideSuggestionTable()
+    }
+}
+
 extension SentimentKeyboard: SentimentBannerDelegate {
     func showAllReplacements(forSuggestion suggestion: (word: Word, replacement: String)) {
         if let replacements = (currentSuggestsionsForWord.filter { $0.word == suggestion.word }).first {
-            items = replacements.suggestions.map { $0.synonym }
+            currentSynonymsForWord = replacements
             tableView.reloadData()
             showSuggestionTable()
         }
