@@ -20,6 +20,7 @@ class SentimentBanner: ExtraView {
     @IBOutlet var replacementCollectionView: UICollectionView!
     @IBOutlet var sentimentLabel: UILabel!
     @IBOutlet var closeButton: UIButton!
+    @IBOutlet var abstractionView: UIView!
     
     var delegate: SentimentBannerDelegate?
     
@@ -84,6 +85,7 @@ class SentimentBanner: ExtraView {
         
         closeButton.isHidden = true
         closeButton.tintColor = .lightGray
+        closeButton.backgroundColor = .clear
     }
     
     
@@ -101,8 +103,7 @@ class SentimentBanner: ExtraView {
         UIView.animate(withDuration: duration, animations: {
             self.sentimentLabel.text = sentiment.emoji
             self.contentView.backgroundColor = sentiment.color
-        }, completion: { _ in
-            self.sentimentLabel.backgroundColor = sentiment.color
+            self.abstractionView.backgroundColor = sentiment.color
         })
         
         if sentiment == .negative {
@@ -147,7 +148,7 @@ class SentimentBanner: ExtraView {
 extension SentimentBanner: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("BANG BANG!!!")
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReplacementSuggestionCell.identifier, for: indexPath)
         
         if let replacementSuggestionCell = cell as? ReplacementSuggestionCell,
