@@ -29,4 +29,29 @@ class Thesaurus {
         
         return nil
     }
+    
+    func synonymsWithPOS(forWord word: String, tag: Tag, callback: @escaping ([Synonym]?) -> ()) {
+        
+        let urlString = "https://api.datamuse.com/words?rel_syn=\(word)&md=p"
+        let url = URL(string: urlString)!
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if error == nil,
+                let data = data {
+                
+                let decoder = JSONDecoder()
+                var synonyms = try! decoder.decode([Synonym].self, from: data)
+                synonyms = synonyms
+                    .filter { $0.tags.contains(tag) }
+                    .filter { !$0.word.isEmpty }
+                callback(synonyms)
+                return
+                
+            }
+            callback(nil)
+            
+        }
+        task.resume()
+    }
+    
 }
