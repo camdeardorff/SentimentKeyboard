@@ -88,6 +88,15 @@ class SentimentBanner: ExtraView {
         closeButton.backgroundColor = .clear
     }
     
+    func addNew(replacementSuggestion: (word: Word, replacement: String)) {
+        if replacementSuggestions != nil {
+            replacementSuggestions!.append(replacementSuggestion)
+        } else {
+            replacementSuggestions = []
+            replacementSuggestions!.append(replacementSuggestion)
+        }
+    }
+    
     
     func update(sentiment: Sentiment, replacements: [(word: Word, replacement: String)]? = nil) {
         print("update sentiment to: ", sentiment)
