@@ -13,8 +13,8 @@ import UIKit
 class SentimentKeyboard: KeyboardViewController {
     
     let classificationService = ClassificationService()
-    var currentSuggestsionsForWord: [(word: Word, suggestions: [(synonym: String, pos: NSLinguisticTag)])] = []
-    var currentSynonymsForWord: (word: Word, suggestions: [(synonym: String, pos: NSLinguisticTag)])? = nil
+    var currentSuggestsionsForWord: [(word: Word, suggestions: [Synonym])] = []
+    var currentSynonymsForWord: (word: Word, suggestions: [Synonym])? = nil
     
     var tableView: UITableView!
     var visualEffectsView: UIVisualEffectView!
@@ -109,6 +109,8 @@ class SentimentKeyboard: KeyboardViewController {
 extension SentimentKeyboard {
     func showSentiment() {
         
+        print("showing sentiment")
+        
         let textDocumentProxy = self.textDocumentProxy
         
         guard let text = textDocumentProxy.documentContextBeforeInput,
@@ -116,11 +118,9 @@ extension SentimentKeyboard {
         
         let prediction = classificationService.predictSentiment(from: text)
         
-        var replacements: [(word: Word, replacement: String)]? = []
-        
         // if negative find replacements for any negative words
         if prediction.sentiment == .negative {
-            
+
             
             let partsOfSpeechForToken = TextProcessor.shared.partsOfSpeechForToken(inString: text)
             var words = partsOfSpeechForToken.enumerated().map { (arg) -> Word in
@@ -134,32 +134,32 @@ extension SentimentKeyboard {
             
             words = words.filter { $0.isNegative }
             
-            
             for word in words {
-                print("found negative word `\(word.text)` to be a \(String(describing: word.pos))")
-                if let synonyms = Thesaurus.shared.resultForQuery(query: word.text)?.synonyms {
+                let tag = Tag.fromNSLingusticTag(word.pos)
+                Thesaurus.shared.synonymsWithPOS(forWord: word.text, tag: tag) {  synonyms in
                     
-                    
-                    
-                    let matches = synonyms.suffix(10)
-                        .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-                        .filter { !classificationService.wordHasNegativeSentiment(word: $0) }
-                        .map { (synonym: $0, pos: TextProcessor.shared.partOfSpeechFor(word: $0)) }
-                        .filter {  $0.pos != nil }
-                        .map { (synonym: $0.synonym, pos: $0.pos!) }
-                    
-                    currentSuggestsionsForWord.append((word: word, suggestions: matches))
-                    
-                    print("relacements for word: ", word.text, " : ", matches)
-                    if let replacement = matches.randomItem() {
-                        print("replace `\(word.text)` with `\(replacement)`")
-                        replacements?.append((word: word, replacement: replacement.synonym))
+                    DispatchQueue.main.async { [weak self] in
+                        guard let strongSelf = self else { return }
+
+                        if let synonymList = synonyms?.sort(),
+                            let top = synonymList.first,
+                            let banner = strongSelf.bannerView as? SentimentBanner {
+                            
+                            
+                            let matches = Array(synonymList
+                                .filter { !strongSelf.classificationService.wordHasNegativeSentiment(word: $0.word) }
+                                .suffix(10))
+                            
+                            print("word: ", word, " has top syn: ", top.word, " and matches: \n\t", matches.map { $0.word })
+                            
+                            banner.addNew(replacementSuggestion: (word: word, replacement: top.word))
+                            strongSelf.currentSuggestsionsForWord.append((word: word, suggestions: matches))
+                        }
                     }
                 }
             }
         }
-        
-        banner.update(sentiment: prediction.sentiment, replacements: replacements)
+        banner.update(sentiment: prediction.sentiment, replacements: [])
 
     }
 }
@@ -196,7 +196,7 @@ extension SentimentKeyboard: UITableViewDataSource {
         guard let synForWord = currentSynonymsForWord else { return UITableViewCell(frame: .zero) }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel?.text = synForWord.suggestions[indexPath.row].synonym
+        cell.textLabel?.text = synForWord.suggestions[indexPath.row].word
         cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
         cell.textLabel?.textAlignment = .center
         cell.backgroundColor = .clear
@@ -218,7 +218,7 @@ extension SentimentKeyboard: UITableViewDelegate {
         if let synForWord = currentSynonymsForWord {
             if synForWord.suggestions.count > indexPath.row {
                 let replacement = synForWord.suggestions[indexPath.row]
-                replace(word: synForWord.word, with: replacement.synonym)
+                replace(word: synForWord.word, with: replacement.word)
                 if let sentimentBanner = bannerView as? SentimentBanner {
                     sentimentBanner.closeButtonWasPressed(self)
                 }
